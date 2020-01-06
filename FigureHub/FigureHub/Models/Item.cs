@@ -1,5 +1,5 @@
 ﻿using System;
-
+//
 namespace FigureHub.Models
 {
     public class Item
