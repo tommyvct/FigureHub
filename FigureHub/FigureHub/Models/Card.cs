@@ -2,9 +2,15 @@
 
 namespace FigureHub.Models
 {
+    public enum CardType
+    {
+        Credit,
+        Debit
+    }
+
     public class Card
     {
-        protected int Balance;
+        protected long Balance;
         protected string Number
         {
             get

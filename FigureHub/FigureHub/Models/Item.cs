@@ -9,10 +9,5 @@ namespace FigureHub.Models
         public string Description { get; set; }
     }
 
-    public enum CardType
-    {
-        Credit,
-        Debit
-    }
 }
 
