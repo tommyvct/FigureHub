@@ -1,17 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FigureHub.Models
 {
     public enum CardType
     {
         Credit,
+        Charge,
         Debit
     }
 
     public class Card
     {
-        protected long Balance;
-        protected string Number
+        long CreditLimit;
+        long AvailCredit;
+        long Balance;            // non-converted multicurrency balance?????
+        long MinimumPayment;
+        DateTime BillingDate;
+        DateTime Payday;
+
+
+        string Number
         {
             get
             {
@@ -19,12 +28,11 @@ namespace FigureHub.Models
             }
             set
             {
-                if (ValidateCardNumber(value))
-                    Number = value;
+                Number = value;
             }
         }
-        protected DateTime MMYY { get; set; }
-        protected string CVV
+        DateTime MMYY { get; set; }
+        string CVV
         {
             get
             {
@@ -36,25 +44,16 @@ namespace FigureHub.Models
                     CVV = value;
             }
         }
-        protected string IssueBank;
-        protected CardType Type;
+        string name;
 
-        protected static bool ValidateCardNumber(string toValidate)
+        List<Account> AccountList;
+
+        string IssueBank;
+        CardType Type;
+
+        Card(string newName, string newNumber, DateTime newMMYY, string newCVV, string newIssuebank, CardType newType)
         {
-            if (toValidate.Trim().Length != 16 || toValidate.Trim().Length != 19)
-                return false;
-
-            for (int i = 0; i < 16; i++)
-            {
-                if (!char.IsDigit(toValidate[i]))
-                    return false;
-            }
-
-            return true;
-        }
-
-        public Card(string newNumber, DateTime newMMYY, string newCVV, string newIssuebank, CardType newType)
-        {
+            name = newName;
             Number = newNumber;
             MMYY = newMMYY;
             CVV = newCVV;
@@ -62,5 +61,15 @@ namespace FigureHub.Models
             Type = newType;
             Balance = 0;
         }
+
+        void AddAccount(Account[] newAccounts)
+        {
+            foreach (var a in newAccounts)
+            {
+                AccountList.Add(a);
+            }
+        }
+
+
     }
 }

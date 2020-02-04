@@ -10,9 +10,11 @@ namespace FigureHub.ViewModels
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            GitHubLink = new Command(async () => await Browser.OpenAsync(new Uri("https://github.com/tommyvct/FigureHub")).ConfigureAwait(false));
+            LicenceLink = new Command(async () => await Browser.OpenAsync(new Uri("https://github.com/tommyvct/FigureHub")).ConfigureAwait(false));
         }
 
-        public ICommand OpenWebCommand { get; }
+        public ICommand GitHubLink { get; }
+        public ICommand LicenceLink { get; }
     }
 }

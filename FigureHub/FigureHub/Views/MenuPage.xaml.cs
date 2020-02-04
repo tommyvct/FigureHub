@@ -20,7 +20,11 @@ namespace FigureHub.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+                new HomeMenuItem {Id = MenuItemType.Overview, Title="Overview" },
+                new HomeMenuItem {Id = MenuItemType.Credit_Cards, Title="Credit Cards" },
+                new HomeMenuItem {Id = MenuItemType.Debit_Cards, Title="Debit Cards" },
+                new HomeMenuItem {Id = MenuItemType.Transactions, Title="Transactions" },
+                new HomeMenuItem {Id = MenuItemType.Settings, Title="Settings" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" }
             };
 

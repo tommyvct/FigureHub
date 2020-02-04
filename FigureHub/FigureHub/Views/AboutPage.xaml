@@ -38,9 +38,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="AppName" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="FigureHub" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="0.1" ForegroundColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -49,15 +49,28 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This app is written in C# and native APIs using the" />
-                                <Span Text=" " />
-                                <Span Text="Xamarin Platform" FontAttributes="Bold" />
-                                <Span Text="." />
+                                <Span Text="A crappy app for keep tracking my personal spending, designed for people who have 100+ credit cards." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
                 <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Released under "/>
+                                <Span Text="LICENCE" 
+                                      TextColor="{StaticResource Accent}">
+                                      <Span.GestureRecognizers>
+                                      <TapGestureRecognizer Command="{Binding LicenceLink}"/>
+                                      </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!--<Label>
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -69,9 +82,9 @@
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
+                </Label>-->
+                <Button Margin="0,10,0,0" Text="GitHub"
+                        Command="{Binding GitHubLink}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
             </StackLayout>
