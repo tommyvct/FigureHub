@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FigureHub_CLI", "FigureHub_CLI\FigureHub_CLI.csproj", "{88106FCC-0DA0-4BFA-80DF-03686D3B8674}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88106FCC-0DA0-4BFA-80DF-03686D3B8674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88106FCC-0DA0-4BFA-80DF-03686D3B8674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88106FCC-0DA0-4BFA-80DF-03686D3B8674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88106FCC-0DA0-4BFA-80DF-03686D3B8674}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25579452-1DCE-4C18-A1A5-6F89DEDB596A}
+	EndGlobalSection
+EndGlobal
