@@ -50,6 +50,7 @@ namespace FigureHub_CLI
                     }
 
                     SQLiteConnection.CreateFile(db);
+                    Console.WriteLine("New database will be at " + db);
                 }
 
             }
@@ -98,8 +99,16 @@ namespace FigureHub_CLI
                 }
                 else
                 {
-                    cmd.CommandText = expression;
-                    Console.WriteLine("" + cmd.ExecuteNonQuery() + " rows updated.");
+                    try
+                    {
+                        cmd.CommandText = expression;
+                        Console.WriteLine("" + cmd.ExecuteNonQuery() + " rows updated.");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("ERROR:" + e.Message);
+                    }
+
                 }
             }
         }
