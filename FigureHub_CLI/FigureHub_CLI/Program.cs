@@ -15,9 +15,9 @@ namespace FigureHub_CLI
             if (args.Length == 1)
             {
                 db = args[1];
-                Console.WriteLine("using " + db);
             }
 
+            Console.WriteLine("using " + db);
             SQLiteConnection connection;
 
             do
@@ -44,13 +44,24 @@ namespace FigureHub_CLI
                         Console.WriteLine();
                     }
 
-                    if (!Directory.Exists(homeDir))
+                    try
                     {
-                        Directory.CreateDirectory(homeDir);
+                        if (!Directory.Exists(homeDir))
+                        {
+                            Directory.CreateDirectory(homeDir);
+                        }
+
+                        SQLiteConnection.CreateFile(db);
+                        InitDB(connection);
+                        Console.WriteLine("New database will be at " + db);
+                    }
+                    catch (Exception ee)
+                    {
+                        Console.WriteLine("ERROR: Cannot create database file.");
+                        Console.WriteLine(e);
+                        Console.WriteLine("Abort.");
                     }
 
-                    SQLiteConnection.CreateFile(db);
-                    Console.WriteLine("New database will be at " + db);
                 }
 
             }
@@ -113,6 +124,53 @@ namespace FigureHub_CLI
             }
         }
 
+        static void InitDB(SQLiteConnection connection)
+        {
+            using var cmd = new SQLiteCommand(connection);
 
+            cmd.CommandText = @"CREATE TABLE Cards 
+            (
+                CardType TEXT,
+                CardNumber TEXT PRIMARY KEY,
+                CardName TEXT,
+                ValidThru DATE,
+                CardholderName TEXT,
+                CVV TEXT,
+                Currency CHAR[3] NOT NULL,
+                Balance REAL,
+                DueDate DATE,
+                DueBalance REAL,
+                Active BOOL NOT NULL
+            );";
+            cmd.ExecuteNonQuery();
+
+            // rowid PRIMARY KEY
+            cmd.CommandText = @"CREATE TABLE BankAccount 
+            (
+                BankAccountNumber TEXT PRIMARY KEY,
+                Balance REAL,
+                Currency CHAR[3] NOT NULL,
+                Active BOOL NOT NULL,
+                Comments TEXT,
+                LinkedCardNumber FOREIGN KEY REFERENCE Cards(CardNumber)
+            );";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = @"CREATE TABLE Transactions 
+            (
+                Description TEXT,
+                Amount REAL NOT NULL,
+                Currency CHAR[3] NOT NULL,
+                Date DATE,
+                Pending BOOL,
+                ForeignCurrencyAmount REAL,
+                ForeignCurrency CHAR[3],
+                CardNumber FOREIGN KEY REFERENCE Cards(CardNumber),
+                BankAccountNumber FOREIGN KEY REFERENCE BankAccount(BankAccountNumber)
+            );";
+            cmd.ExecuteNonQuery();
+
+
+        }
     }
 }
