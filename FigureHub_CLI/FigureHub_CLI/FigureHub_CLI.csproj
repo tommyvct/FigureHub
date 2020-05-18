@@ -5,8 +5,24 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="sqlite3\sqldiff.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sqlite3\sqlite3.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sqlite3\sqlite3_analyzer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
